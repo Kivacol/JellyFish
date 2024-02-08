@@ -67,6 +67,7 @@ public class JellyJump : MonoBehaviour
     {
         if (jellyDash.isDashing || jellyWallJump.isWallJumping || jellyWallJump.isWallSliding)
         {
+            isFloated = false;
             return;
         }
 
@@ -217,7 +218,7 @@ public class JellyJump : MonoBehaviour
             isDown = true;
 
             float maxGravity;
-            rb.gravityScale = downGravity + (65f * Time.deltaTime);
+            rb.gravityScale = downGravity + (70f * Time.deltaTime);
             maxGravity = rb.gravityScale;
 
             if (rb.gravityScale >= 5f)

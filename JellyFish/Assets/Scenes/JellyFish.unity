@@ -1704,7 +1704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   floatSpeed: 3.5
-  jumpSpeed: 6.5
+  jumpSpeed: 7
   horizontal: 0
   isFacingRight: 0
 --- !u!114 &1726729317
@@ -1719,11 +1719,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef758950c89643c3a84c0ac4cd6421d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 14
+  jumpForce: 15
   jumpForce2: 13
   jumpForce3: 10
   jumpTimeCount: 0
-  jumpTime: 0.3
+  jumpTime: 0.2
   isGround: 0
   isJumpping: 0
   isJumpingMove: 0
@@ -1958,11 +1958,11 @@ MonoBehaviour:
   wallSlidingSpeed: 2
   isWallJumping: 0
   wallJumpingDirection: 0
-  wallJumpingTime: 0.2
+  wallJumpingTime: 0.15
   wallJumpingCounter: 0
-  wallJumpingDuraion: 0.4
-  wallJumpForceX: 50
-  wallJumpForceY: 14
+  wallJumpingDuraion: 0.3
+  wallJumpForceX: 65
+  wallJumpForceY: 15
   wallCheck: {fileID: 1364618217}
   wallLayer:
     serializedVersion: 2

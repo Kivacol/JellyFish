@@ -47,7 +47,7 @@ public class JellyWallJump : MonoBehaviour
         if(IsWalled() && !jellyJump.isGround)
         {
             isWallSliding = true;
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            rb.velocity = new Vector2(rb.velocity.x , Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
         }
 
         else
@@ -79,15 +79,24 @@ public class JellyWallJump : MonoBehaviour
                 isWallJumping = true;
                 wallJumpingCounter = 0f;
 
-                if (jellyMove.isFacingRight)
-                {                    
+                if (jellyMove.horizontal > 0)
+                {
+                    Debug.Log("right");
                     rb.velocity = new Vector2(-transform.localScale.x * wallJumpForceX, wallJumpForceY);
                     transform.eulerAngles = new Vector3(0, 180, 0);
                 }
-                else if (!jellyMove.isFacingRight)
+                else if (jellyMove.horizontal < 0)
                 {
+                    Debug.Log("lift");
                     rb.velocity = new Vector2(transform.localScale.x * wallJumpForceX, wallJumpForceY);
                     transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+                else if (jellyMove.horizontal == 0)
+                {
+                    Debug.Log("mid");
+
+                    rb.velocity = new Vector2(transform.localScale.x * wallJumpForceX, transform.position.y);
+                    
                 }
 
                 Invoke(nameof(StopWallJumping), wallJumpingDuraion);
