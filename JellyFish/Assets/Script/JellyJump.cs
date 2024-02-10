@@ -243,6 +243,7 @@ public class JellyJump : MonoBehaviour
             rb.gravityScale = floatGravity;
             isFloat = true;
             isFloated = true;
+            canDoubleJump = false;
         }
     }
 

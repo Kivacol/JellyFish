@@ -8,6 +8,8 @@ public class JellyWallJump : MonoBehaviour
     JellyJump jellyJump;
     JellyMove jellyMove;
 
+    public Vector2 playerPos;
+
     [SerializeField] public bool isWallSliding;
     [SerializeField] private float wallSlidingSpeed;
 
@@ -29,12 +31,23 @@ public class JellyWallJump : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jellyJump = GetComponent<JellyJump>();
         jellyMove = GetComponent<JellyMove>();
+        playerPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         WallSlid();
+
+        if (isWallSliding)
+        {
+            StopXMove();
+        }
+        else
+        {
+            CanXMove();
+        }
+
     }
 
     private bool IsWalled()
@@ -52,8 +65,19 @@ public class JellyWallJump : MonoBehaviour
 
         else
         {
+            
             isWallSliding = false;
         }
+    }
+
+    void StopXMove()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+    }
+
+    void CanXMove()
+    {
+        rb.constraints = RigidbodyConstraints2D.None;
     }
 
     public void WallJump()
@@ -65,6 +89,7 @@ public class JellyWallJump : MonoBehaviour
             if (isWallSliding)
             {
                 isWallJumping = false;
+                isWallSliding = false;
                 wallJumpingCounter = wallJumpingTime;
 
                 CancelInvoke(nameof(StopWallJumping));

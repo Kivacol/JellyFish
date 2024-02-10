@@ -63,19 +63,23 @@ public class JellyMove : MonoBehaviour
         //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
         //角色翻轉
-        if (horizontal > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            isFacingRight = true;
 
-            //followPlayer.CallTrun();
-        }
-        else if (horizontal < 0)
+        if (!jellyWallJump.isWallSliding)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-            isFacingRight = false;
+            if (horizontal > 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                isFacingRight = true;
 
-            //followPlayer.CallTrun();
+                //followPlayer.CallTrun();
+            }
+            else if (horizontal < 0)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                isFacingRight = false;
+
+                //followPlayer.CallTrun();
+            }
         }
     }
 
